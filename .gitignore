@@ -1,0 +1,20 @@
+# Archivos y carpetas generados por Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Dependencias de Ruby, Gemas y configuraciones locales
+/gems/
+.bundle/
+vendor/
+
+# Archivos de configuración de linting local
+.htmlhintignore
+.htmlhintrc
+
+# Archivos de logs y del sistema operativo
+*.gem
+*.rbc
+.DS_Store
+Thumbs.db
