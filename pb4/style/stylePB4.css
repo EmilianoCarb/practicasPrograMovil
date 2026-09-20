@@ -89,3 +89,15 @@ footer .col-md-3 a:hover {
 .btn-custom {
     background-color: #bf1402;
 }
+
+.navbar-custom .nav-link {
+  font-weight: bold;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: #fff !important;
+}
+
+.navbar-custom .nav-link:hover {
+  color: #fff !important;
+  opacity: 0.85;
+}
