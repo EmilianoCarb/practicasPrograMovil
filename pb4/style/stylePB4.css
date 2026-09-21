@@ -100,11 +100,13 @@ footer .col-md-3 a:hover {
   opacity: 0.85;
 }
 
-.navbar-light .navbar-brand {
-  font-size: 0.85rem;
-  font-weight: normal;
+.teams-strip > a {
+  margin: 0 0.5rem;
+  flex-shrink: 0;
 }
-
-.btn-custom {
-    background-color: #bf1402;
+.teams-strip {
+  scrollbar-width: none;
+}
+.teams-strip::-webkit-scrollbar {
+  display: none;
 }
