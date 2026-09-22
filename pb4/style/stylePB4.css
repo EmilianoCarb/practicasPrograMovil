@@ -9,7 +9,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: Roboto, Arial, Helvetica, sans-serif; /* fuente global, antes solo estaba en los navbars */
+  font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
 /* El contenido principal crece para empujar el footer hacia abajo */
@@ -88,14 +88,9 @@ footer + div {
 }
 
 .navbar-custom .navbar-nav {
-  align-items: center; /* correcto en desktop (fila horizontal); en mobile se corrige abajo */
+  align-items: center;
 }
 
-/* Fix del botón hamburguesa: en mobile el <ul> pasa a columna (flex-direction:column
-   por defecto de Bootstrap), y el align-items:center de arriba -pensado para desktop-
-   termina centrando horizontalmente el texto de cada link ("Motor", "Polideportivo"...)
-   en vez de alinearlo a la izquierda como una lista normal. También le damos fondo
-   sólido al panel para que no se vea transparente sobre el contenido de la página. */
 @media (max-width: 767.98px) {
   .navbar-custom .navbar-collapse {
     background-color: #bf1402;
@@ -140,12 +135,6 @@ footer + div {
   opacity: 0.85;
 }
 
-/* Centrado real del menú respecto al ancho total del navbar,
-   sin usar position:absolute en el <ul> (eso rompía el ancho del mega-menu,
-   porque el mega-menu toma como referencia al ancestro posicionado más
-   cercano, y el <ul> se volvía ese ancestro en vez del navbar completo).
-   Con grid, el <ul> queda centrado en la columna del medio sin cambiar
-   su position, así el mega-menu sigue anclado al navbar completo. */
 @media (min-width: 768px) {
   .navbar-custom .navbar-collapse {
     display: grid;
@@ -164,7 +153,7 @@ footer + div {
 
 /* --- Navbar Sticky (Barra Flotante / Pegajosa) --- */
 .navbar-sticky {
-  display: none; /* jQuery controla fadeIn/fadeOut */
+  display: none;
   position: fixed !important;
   top: 0;
   left: 0;
@@ -228,7 +217,6 @@ footer + div {
   z-index: 1040 !important;
 }
 
-/* Estilos de Tipografía y Links Internos */
 .mega-menu h6 {
   color: #fff;
   font-weight: bold;
@@ -287,7 +275,6 @@ footer + div {
     width: 100%;
   }
 
-  /* Despliegue por hover en desktop */
   .nav-item.dropdown:hover > .dropdown-menu {
     display: block;
     margin-top: 0;
@@ -296,16 +283,14 @@ footer + div {
 
 /* --- Comportamiento en Móvil / Menú Hamburguesa (< 768px) --- */
 @media (max-width: 767.98px) {
-  /* Contenedor relativo para el dropdown en móvil */
   .navbar-nav .nav-item.dropdown {
     position: relative !important;
   }
 
-  /* Anulamos la posición flotante/absoluta que fuerza Bootstrap/Popper en móviles */
   .navbar-collapse .dropdown-menu.mega-menu {
     position: static !important;
     float: none !important;
-    transform: none !important; /* Desactiva el cálculo de Popper.js */
+    transform: none !important;
     width: 100% !important;
     background: rgba(12, 16, 22, 0.98);
     box-shadow: none !important;
@@ -314,7 +299,6 @@ footer + div {
     margin-top: 0;
   }
 
-  /* Asegura que cuando Bootstrap añade .show al hacer clic, se despliegue hacia abajo */
   .navbar-collapse .dropdown-menu.mega-menu.show {
     display: block !important;
   }
@@ -361,4 +345,46 @@ footer .col-md-3 a {
 footer .col-md-3 a:hover {
   color: #fff;
   text-decoration: none;
+}
+
+/* ==========================================================================
+   5. TIRA DE "ES NOTICIA" (TRENDING BAR)
+   ========================================================================== */
+.trending-bar-wrapper {
+  font-size: 0.8rem;
+  line-height: 1.2;
+  border-color: #e5e5e5 !important;
+}
+
+.trending-label {
+  color: #222222;
+  font-size: 0.82rem;
+}
+
+.trending-topics {
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.trending-topics::-webkit-scrollbar {
+  display: none;
+}
+
+.trending-topics a {
+  color: #666666;
+  text-decoration: none;
+  font-size: 0.82rem;
+  transition: color 0.15s ease-in-out;
+}
+
+.trending-topics a:hover {
+  color: #bf1402;
+  text-decoration: underline;
+}
+
+/* Espaciado simple entre links como en el sitio original */
+.trending-topics a {
+  margin-right: 0.85rem;
 }
