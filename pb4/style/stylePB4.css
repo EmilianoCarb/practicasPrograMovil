@@ -1,3 +1,6 @@
+/* ==========================================================================
+   1. ESTRUCTURA GLOBAL Y LAYOUT
+   ========================================================================== */
 html, body {
   height: 100%;
 }
@@ -18,95 +21,12 @@ footer + div {
   flex-shrink: 0;
 }
 
-/* MEGA MENÚS */
-.nav-item.dropdown { 
-  position: static; 
-}
 
-.mega-menu {
-  background: rgba(18, 24, 33, 0.92);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  padding: 2rem;
-  border: none;
-  border-radius: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-}
+/* ==========================================================================
+   2. BARRAS DE NAVEGACIÓN (NAVBARS)
+   ========================================================================== */
 
-.mega-menu h6 {
-  color: #fff;
-  font-weight: bold;
-  margin-bottom: .6rem;
-  font-size: 1rem;
-}
-
-.mega-menu h6.muted-title { 
-  color: #6c7784; 
-}
-
-.mega-menu small {
-  color: #8b96a3;
-  display: block;
-  margin-bottom: .8rem;
-}
-
-.mega-menu a {
-  color: #fff;
-  text-decoration: none;
-  display: block;
-  padding: .15rem 0;
-  background: transparent;
-}
-
-.mega-menu a:hover { 
-  color: #e30613; 
-}
-
-.mega-menu small a { 
-  color: #8b96a3; 
-  text-decoration: none; 
-  display: inline; 
-  padding: 0; 
-}
-
-.mega-menu small a:hover { 
-  color: #fff; 
-}
-
-@media (min-width: 768px) {
-  .nav-item.dropdown:hover .dropdown-menu {
-    display: block;
-    margin-top: 0;
-  }
-}
-
-/* FOOTER */
-footer {
-  background-color: #262626;
-}
-
-footer .col-md-3 a {
-  display: block;
-  color: rgba(255, 255, 255, .55);
-  margin-bottom: .25rem;
-}
-
-footer .col-md-3 a:hover {
-  color: #fff;
-  text-decoration: none;
-}
-
-/* NAVBAR CUSTOM (BARRA ROJA PRINCIPAL) */
-.navbar-custom {
-  background-color: #bf1402;
-  font-family: Roboto, Arial, Helvetica, sans-serif;
-  min-height: 44px;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
+/* --- Top Navbar (Barra Superior Blanca) --- */
 #topNavbar {
   font-family: Roboto, Arial, Helvetica, sans-serif;
 }
@@ -116,10 +36,9 @@ footer .col-md-3 a:hover {
   font-size: 12px;
   font-weight: bold;
   color: #121212;
-  padding: 0px 0px 0px 5px;
+  padding: 0 0 0 5px;
 }
 
-/* topNavbar RESPONSIVE */
 @media (max-width: 767.98px) {
   #topNavbar .navbar {
     padding-left: 0.5rem;
@@ -156,6 +75,15 @@ footer .col-md-3 a:hover {
   }
 }
 
+/* --- Navbar Custom (Barra Roja Principal) --- */
+.navbar-custom {
+  background-color: #bf1402;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  min-height: 44px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 .navbar-custom .navbar-nav {
   align-items: center;
 }
@@ -177,9 +105,9 @@ footer .col-md-3 a:hover {
   opacity: 0.85;
 }
 
-/* NAVBAR STICKY (BARRA PEGAYOSA AL HACER SCROLL) */
+/* --- Navbar Sticky (Barra Flotante / Pegajosa) --- */
 .navbar-sticky {
-  display: none; /* jQuery controla fadeIn/fadeOut con esta propiedad */
+  display: none; /* jQuery controla fadeIn/fadeOut */
   position: fixed !important;
   top: 0;
   left: 0;
@@ -193,30 +121,258 @@ footer .col-md-3 a:hover {
   text-decoration: none;
 }
 
-/* Ajuste para mantener los elementos clonados horizontales */
 #stickyNavContent .navbar-nav {
   flex-direction: row !important;
+  margin-right: auto !important;
+  margin-left: 0 !important;
 }
 
 #stickyNavContent .nav-link {
-  padding-left: 0.75rem !important;
-  padding-right: 0.75rem !important;
-  font-size: 0.95rem;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  font-size: 15px !important;
+  white-space: nowrap;
 }
 
-/* Desactivar en pantallas pequeñas para evitar colisión con el menú hamburguesa */
+.sticky-logo-badge {
+  background-color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  width: 50px;
+  padding: 4px;
+  margin-right: 15px;
+  transform: skewX(-12deg);
+  transform-origin: top left;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.sticky-logo-badge img {
+  max-height: 28px !important;
+  width: auto !important;
+  transform: skewX(12deg);
+  display: block;
+}
+
 @media (max-width: 767.98px) {
   .navbar-sticky {
     display: none !important;
   }
 }
 
-/* TIRA DE EQUIPOS */
-.teams-strip > a {
-  margin: 0 0.5rem;
-  flex-shrink: 0;
+
+/* ==========================================================================
+   3. MEGA MENÚS (ESCRITORIO Y MÓVIL)
+   ========================================================================== */
+
+/* Estilos de Tipografía y Links Internos */
+.mega-menu h6 {
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 0.6rem;
+  font-size: 1rem;
 }
 
+.mega-menu h6.muted-title { 
+  color: #6c7784; 
+}
+
+.mega-menu small {
+  color: #8b96a3;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.mega-menu a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 0.15rem 0;
+  background: transparent;
+}
+
+.mega-menu a:hover { 
+  color: #e30613; 
+}
+
+.mega-menu small a { 
+  color: #8b96a3; 
+  text-decoration: none; 
+  display: inline; 
+  padding: 0; 
+}
+
+.mega-menu small a:hover { 
+  color: #fff; 
+}
+
+/* --- Comportamiento en Escritorio (>= 768px) --- */
+@media (min-width: 768px) {
+  .nav-item.dropdown.position-md-static { 
+    position: static !important; 
+  }
+
+  .mega-menu {
+    background: rgba(18, 24, 33, 0.95);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 2rem;
+    border: none;
+    border-radius: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  /* Despliegue por hover en desktop */
+  .nav-item.dropdown:hover > .dropdown-menu {
+    display: block;
+    margin-top: 0;
+  }
+}
+
+/* --- Comportamiento en Móvil / Menú Hamburguesa (< 768px) --- */
+@media (max-width: 767.98px) {
+  /* Contenedor relativo para el dropdown en móvil */
+  .navbar-nav .nav-item.dropdown {
+    position: relative !important;
+  }
+
+  /* Anulamos la posición flotante/absoluta que fuerza Bootstrap/Popper en móviles */
+  .navbar-collapse .dropdown-menu.mega-menu {
+    position: static !important;
+    float: none !important;
+    transform: none !important; /* Desactiva el cálculo de Popper.js */
+    width: 100% !important;
+    background: rgba(12, 16, 22, 0.98);
+    box-shadow: none !important;
+    border: none;
+    padding: 1rem;
+    margin-top: 0;
+  }
+
+  /* Asegura que cuando Bootstrap añade .show al hacer clic, se despliegue hacia abajo */
+  .navbar-collapse .dropdown-menu.mega-menu.show {
+    display: block !important;
+  }
+
+  .mega-menu .row > [class*="col-"] {
+    margin-bottom: 1.25rem;
+  }
+
+  .mega-menu .row > [class*="col-"]:last-child {
+    margin-bottom: 0;
+  }
+} /* ==========================================================================
+   3. MEGA MENÚS (ESCRITORIO Y MÓVIL)
+   ========================================================================== */
+
+/* Estilos de Tipografía y Links Internos */
+.mega-menu h6 {
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 0.6rem;
+  font-size: 1rem;
+}
+
+.mega-menu h6.muted-title { 
+  color: #6c7784; 
+}
+
+.mega-menu small {
+  color: #8b96a3;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.mega-menu a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 0.15rem 0;
+  background: transparent;
+}
+
+.mega-menu a:hover { 
+  color: #e30613; 
+}
+
+.mega-menu small a { 
+  color: #8b96a3; 
+  text-decoration: none; 
+  display: inline; 
+  padding: 0; 
+}
+
+.mega-menu small a:hover { 
+  color: #fff; 
+}
+
+/* --- Comportamiento en Escritorio (>= 768px) --- */
+@media (min-width: 768px) {
+  .nav-item.dropdown.position-md-static { 
+    position: static !important; 
+  }
+
+  .mega-menu {
+    background: rgba(18, 24, 33, 0.95);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 2rem;
+    border: none;
+    border-radius: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  /* Despliegue por hover en desktop */
+  .nav-item.dropdown:hover > .dropdown-menu {
+    display: block;
+    margin-top: 0;
+  }
+}
+
+/* --- Comportamiento en Móvil / Menú Hamburguesa (< 768px) --- */
+@media (max-width: 767.98px) {
+  /* Contenedor relativo para el dropdown en móvil */
+  .navbar-nav .nav-item.dropdown {
+    position: relative !important;
+  }
+
+  /* Anulamos la posición flotante/absoluta que fuerza Bootstrap/Popper en móviles */
+  .navbar-collapse .dropdown-menu.mega-menu {
+    position: static !important;
+    float: none !important;
+    transform: none !important; /* Desactiva el cálculo de Popper.js */
+    width: 100% !important;
+    background: rgba(12, 16, 22, 0.98);
+    box-shadow: none !important;
+    border: none;
+    padding: 1rem;
+    margin-top: 0;
+  }
+
+  /* Asegura que cuando Bootstrap añade .show al hacer clic, se despliegue hacia abajo */
+  .navbar-collapse .dropdown-menu.mega-menu.show {
+    display: block !important;
+  }
+
+  .mega-menu .row > [class*="col-"] {
+    margin-bottom: 1.25rem;
+  }
+
+  .mega-menu .row > [class*="col-"]:last-child {
+    margin-bottom: 0;
+  }
+} 
+/* ==========================================================================
+   4. COMPONENTES SECUNDARIOS (TIRA DE EQUIPOS Y FOOTER)
+   ========================================================================== */
+
+/* --- Tira de Equipos --- */
 .teams-strip {
   scrollbar-width: none;
 }
@@ -225,48 +381,23 @@ footer .col-md-3 a:hover {
   display: none;
 }
 
-
-/* Desinclinamos la imagen interna para que la letra 'M' no se deforme */
-.sticky-logo-badge img {
-  height: 28px;
-  width: auto;
-  transform: skewX(12deg);
+.teams-strip > a {
+  margin: 0 0.5rem;
+  flex-shrink: 0;
 }
 
-/* --- AJUSTE DE ESPACIADO DE NAVEGACIÓN --- */
-/* Cierra la distancia entre cada ítem del menú en la barra pegajosa */
-#stickyNavContent .nav-link {
-  padding-left: 10px !important;
-  padding-right: 10px !important;
-  font-size: 15px !important;
-  white-space: nowrap;
+/* --- Footer --- */
+footer {
+  background-color: #262626;
 }
 
-#stickyNavContent .navbar-nav {
-  margin-right: auto !important; /* Mantiene el menú pegado a la izquierda */
-  margin-left: 0 !important;
-}
-
-/* Corrección para que la M no ocupe toda la pantalla */
-.sticky-logo-badge {
-  background-color: #fff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 44px; /* Alto fijo de la cajita blanca */
-  width: 50px;  /* Ancho fijo de la cajita blanca */
-  padding: 4px;
-  margin-right: 15px;
-  transform: skewX(-12deg);
-  transform-origin: top left;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  flex-shrink: 0; /* Evita que Bootstrap lo aplaste o estire */
-}
-
-/* Control estricto de la imagen interna */
-.sticky-logo-badge img {
-  max-height: 28px !important; /* Limita la altura de la 'M' */
-  width: auto !important;       /* Mantiene la proporción */
-  transform: skewX(12deg);
+footer .col-md-3 a {
   display: block;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 0.25rem;
+}
+
+footer .col-md-3 a:hover {
+  color: #fff;
+  text-decoration: none;
 }
