@@ -9,6 +9,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-family: Roboto, Arial, Helvetica, sans-serif; /* fuente global, antes solo estaba en los navbars */
 }
 
 /* El contenido principal crece para empujar el footer hacia abajo */
@@ -82,10 +83,44 @@ footer + div {
   min-height: 44px;
   padding-top: 0;
   padding-bottom: 0;
+  position: relative;
+  z-index: 1035;
 }
 
 .navbar-custom .navbar-nav {
-  align-items: center;
+  align-items: center; /* correcto en desktop (fila horizontal); en mobile se corrige abajo */
+}
+
+/* Fix del botón hamburguesa: en mobile el <ul> pasa a columna (flex-direction:column
+   por defecto de Bootstrap), y el align-items:center de arriba -pensado para desktop-
+   termina centrando horizontalmente el texto de cada link ("Motor", "Polideportivo"...)
+   en vez de alinearlo a la izquierda como una lista normal. También le damos fondo
+   sólido al panel para que no se vea transparente sobre el contenido de la página. */
+@media (max-width: 767.98px) {
+  .navbar-custom .navbar-collapse {
+    background-color: #bf1402;
+    position: relative;
+    z-index: 1045;
+    width: 100%;
+  }
+
+  .navbar-custom .navbar-nav {
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .navbar-custom .navbar-nav .nav-link {
+    text-align: left;
+    width: 100%;
+  }
+
+  .navbar-custom .navbar-nav.mx-auto {
+    margin: 0 !important;
+  }
+
+  .navbar-custom form {
+    margin: 0.5rem 0;
+  }
 }
 
 .navbar-custom .navbar-nav.mx-auto {
@@ -103,6 +138,28 @@ footer + div {
 .navbar-custom .nav-link:hover {
   color: #fff !important;
   opacity: 0.85;
+}
+
+/* Centrado real del menú respecto al ancho total del navbar,
+   sin usar position:absolute en el <ul> (eso rompía el ancho del mega-menu,
+   porque el mega-menu toma como referencia al ancestro posicionado más
+   cercano, y el <ul> se volvía ese ancestro en vez del navbar completo).
+   Con grid, el <ul> queda centrado en la columna del medio sin cambiar
+   su position, así el mega-menu sigue anclado al navbar completo. */
+@media (min-width: 768px) {
+  .navbar-custom .navbar-collapse {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+  .navbar-custom .navbar-nav.mx-auto {
+    grid-column: 2;
+    margin: 0 !important;
+  }
+  .navbar-custom form {
+    grid-column: 3;
+    justify-self: end;
+  }
 }
 
 /* --- Navbar Sticky (Barra Flotante / Pegajosa) --- */
@@ -167,6 +224,10 @@ footer + div {
    3. MEGA MENÚS (ESCRITORIO Y MÓVIL)
    ========================================================================== */
 
+.mega-menu {
+  z-index: 1040 !important;
+}
+
 /* Estilos de Tipografía y Links Internos */
 .mega-menu h6 {
   color: #fff;
@@ -265,109 +326,9 @@ footer + div {
   .mega-menu .row > [class*="col-"]:last-child {
     margin-bottom: 0;
   }
-} /* ==========================================================================
-   3. MEGA MENÚS (ESCRITORIO Y MÓVIL)
-   ========================================================================== */
-
-/* Estilos de Tipografía y Links Internos */
-.mega-menu h6 {
-  color: #fff;
-  font-weight: bold;
-  margin-bottom: 0.6rem;
-  font-size: 1rem;
 }
 
-.mega-menu h6.muted-title { 
-  color: #6c7784; 
-}
 
-.mega-menu small {
-  color: #8b96a3;
-  display: block;
-  margin-bottom: 0.8rem;
-}
-
-.mega-menu a {
-  color: #fff;
-  text-decoration: none;
-  display: block;
-  padding: 0.15rem 0;
-  background: transparent;
-}
-
-.mega-menu a:hover { 
-  color: #e30613; 
-}
-
-.mega-menu small a { 
-  color: #8b96a3; 
-  text-decoration: none; 
-  display: inline; 
-  padding: 0; 
-}
-
-.mega-menu small a:hover { 
-  color: #fff; 
-}
-
-/* --- Comportamiento en Escritorio (>= 768px) --- */
-@media (min-width: 768px) {
-  .nav-item.dropdown.position-md-static { 
-    position: static !important; 
-  }
-
-  .mega-menu {
-    background: rgba(18, 24, 33, 0.95);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    padding: 2rem;
-    border: none;
-    border-radius: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-  }
-
-  /* Despliegue por hover en desktop */
-  .nav-item.dropdown:hover > .dropdown-menu {
-    display: block;
-    margin-top: 0;
-  }
-}
-
-/* --- Comportamiento en Móvil / Menú Hamburguesa (< 768px) --- */
-@media (max-width: 767.98px) {
-  /* Contenedor relativo para el dropdown en móvil */
-  .navbar-nav .nav-item.dropdown {
-    position: relative !important;
-  }
-
-  /* Anulamos la posición flotante/absoluta que fuerza Bootstrap/Popper en móviles */
-  .navbar-collapse .dropdown-menu.mega-menu {
-    position: static !important;
-    float: none !important;
-    transform: none !important; /* Desactiva el cálculo de Popper.js */
-    width: 100% !important;
-    background: rgba(12, 16, 22, 0.98);
-    box-shadow: none !important;
-    border: none;
-    padding: 1rem;
-    margin-top: 0;
-  }
-
-  /* Asegura que cuando Bootstrap añade .show al hacer clic, se despliegue hacia abajo */
-  .navbar-collapse .dropdown-menu.mega-menu.show {
-    display: block !important;
-  }
-
-  .mega-menu .row > [class*="col-"] {
-    margin-bottom: 1.25rem;
-  }
-
-  .mega-menu .row > [class*="col-"]:last-child {
-    margin-bottom: 0;
-  }
-} 
 /* ==========================================================================
    4. COMPONENTES SECUNDARIOS (TIRA DE EQUIPOS Y FOOTER)
    ========================================================================== */
