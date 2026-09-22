@@ -54,7 +54,7 @@ footer + div {
 .mega-menu small a { color:#8b96a3; text-decoration:none; display:inline; padding:0; }
 .mega-menu small a:hover { color:#fff; }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .nav-item.dropdown:hover .dropdown-menu {
     display: block;
     margin-top: 0;
@@ -77,6 +77,11 @@ footer .col-md-3 a:hover {
 
 .navbar-custom {
   background-color: #bf1402;
+  font-family: Roboto, Arial, Helvetica, sans-serif; /* fuente real de Marca.com, tomada del inspector */
+}
+
+#topNavbar {
+  font-family: Roboto, Arial, Helvetica, sans-serif; /* misma fuente, aplicada también al navbar superior */
 }
 
 .navbar-custom .navbar-nav {
@@ -98,6 +103,35 @@ footer .col-md-3 a:hover {
 .navbar-custom .nav-link:hover {
   color: #fff !important;
   opacity: 0.85;
+}
+
+.navbar-sticky {
+  display: none; /* jQuery la muestra/oculta con .css('display', ...) al hacer scroll */
+  top: 0;
+  z-index: 1030; /* por encima del contenido, mismo nivel que fixed-top de Bootstrap */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  animation: stickyFadeIn 0.2s ease-in forwards;
+}
+
+@keyframes stickyFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.navbar-sticky .btn-link {
+  text-decoration: none;
+}
+
+/* La barra sticky solo tiene sentido en desktop: en mobile ya existe el logo
+   M chico + el navbar colapsable, así que forzamos su ocultamiento aquí para
+   que nunca choque con el toggler de hamburguesa.
+   IMPORTANTE: este valor debe coincidir con el breakpoint que uses en
+   navbar-expand-* (md = 767.98px, lg = 991.98px). Si cambiás uno, cambiá el otro. */
+@media (max-width: 767.98px) {
+  .navbar-sticky {
+    display: none !important;
+  }
 }
 
 .teams-strip > a {
