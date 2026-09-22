@@ -1,24 +1,17 @@
-<!--
-    Barra roja "sticky": es una copia compacta del menú principal (#menuNavbar)
-    que aparece fija arriba una vez que el usuario deja de ver el navbar original.
-    Los links de Fútbol/Baloncesto/Motor/Polideportivo se clonan por JS desde
-    #menuNavbar (ver script al final de practicab4.html), así no se duplica
-    manualmente todo el mega-menú.
--->
-<nav class="navbar-custom navbar-sticky fixed-top" id="stickyNavbar">
-    <div class="container-fluid d-flex align-items-center">
+<nav class="navbar navbar-expand-md navbar-custom navbar-sticky fixed-top" id="stickyNavbar">
+    <div class="container-fluid align-items-center p-0">
 
-        <!-- Logo M chico, siempre visible en la barra sticky -->
-        <a class="d-flex align-items-center mr-4" href="#">
-            <img src="./imagenes/logosMarca/M-Marca.png" width="30" height="30" alt="M">
+        <!-- Logo en contenedor trapezoidal blanco que sobresale -->
+        <a class="sticky-logo-badge" href="#">
+            <img src="./imagenes/logosMarca/M-Marca.png" alt="M">
         </a>
 
-        <!-- Aquí se insertan por JS los links clonados de #menuNavbar -->
+        <!-- Contenedor de enlaces clonados -->
         <div id="stickyNavContent" class="d-flex align-items-center flex-grow-1"></div>
 
-        <!-- Lupa + botones, igual que en el header original -->
-        <div class="d-flex align-items-center">
-            <button class="btn btn-link text-white mr-2 px-2" type="button" aria-label="Buscar en marca.com">
+        <!-- Botones derechos (Lupa + Acceso) -->
+        <div class="d-flex align-items-center ml-auto pr-3">
+            <button class="btn btn-link text-white mr-1 px-2" type="button" aria-label="Buscar en marca.com">
                 <i class="fas fa-search"></i>
             </button>
             <button class="btn btn-light btn-sm mr-2">Suscríbete</button>

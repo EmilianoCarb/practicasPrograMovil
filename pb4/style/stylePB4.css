@@ -18,30 +18,40 @@ footer + div {
   flex-shrink: 0;
 }
 
-.nav-item.dropdown { position: static; }
+/* MEGA MENÚS */
+.nav-item.dropdown { 
+  position: static; 
+}
+
 .mega-menu {
-    background: rgba(18, 24, 33, 0.92);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    padding: 2rem;
-    border: none;
-    border-radius: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
+  background: rgba(18, 24, 33, 0.92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 2rem;
+  border: none;
+  border-radius: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
 }
+
 .mega-menu h6 {
-    color:#fff;
-    font-weight:bold;
-    margin-bottom:.6rem;
-    font-size:1rem;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: .6rem;
+  font-size: 1rem;
 }
-.mega-menu h6.muted-title { color:#6c7784; }
+
+.mega-menu h6.muted-title { 
+  color: #6c7784; 
+}
+
 .mega-menu small {
-    color:#8b96a3;
-    display:block;
-    margin-bottom:.8rem;
+  color: #8b96a3;
+  display: block;
+  margin-bottom: .8rem;
 }
+
 .mega-menu a {
   color: #fff;
   text-decoration: none;
@@ -49,10 +59,21 @@ footer + div {
   padding: .15rem 0;
   background: transparent;
 }
-.mega-menu a:hover { color: #e30613; }
 
-.mega-menu small a { color:#8b96a3; text-decoration:none; display:inline; padding:0; }
-.mega-menu small a:hover { color:#fff; }
+.mega-menu a:hover { 
+  color: #e30613; 
+}
+
+.mega-menu small a { 
+  color: #8b96a3; 
+  text-decoration: none; 
+  display: inline; 
+  padding: 0; 
+}
+
+.mega-menu small a:hover { 
+  color: #fff; 
+}
 
 @media (min-width: 768px) {
   .nav-item.dropdown:hover .dropdown-menu {
@@ -61,27 +82,78 @@ footer + div {
   }
 }
 
+/* FOOTER */
 footer {
   background-color: #262626;
 }
 
 footer .col-md-3 a {
   display: block;
-  color: rgba(255,255,255,.55);
+  color: rgba(255, 255, 255, .55);
   margin-bottom: .25rem;
 }
+
 footer .col-md-3 a:hover {
   color: #fff;
   text-decoration: none;
 }
 
+/* NAVBAR CUSTOM (BARRA ROJA PRINCIPAL) */
 .navbar-custom {
   background-color: #bf1402;
-  font-family: Roboto, Arial, Helvetica, sans-serif; /* fuente real de Marca.com, tomada del inspector */
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  min-height: 44px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 #topNavbar {
-  font-family: Roboto, Arial, Helvetica, sans-serif; /* misma fuente, aplicada también al navbar superior */
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+#topNavbar .navbar-brand span {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #121212;
+  padding: 0px 0px 0px 5px;
+}
+
+/* topNavbar RESPONSIVE */
+@media (max-width: 767.98px) {
+  #topNavbar .navbar {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  #topNavbar .topnav-icons img {
+    width: 20px !important;
+    height: auto !important;
+  }
+
+  #topNavbar .topnav-icons .pl-2 {
+    padding-left: 0.5rem !important;
+  }
+
+  #topNavbar .topnav-logo img {
+    max-width: 70px;
+    height: auto;
+  }
+
+  #topNavbar .topnav-lang {
+    padding: 0.25rem 0.4rem !important;
+    margin-right: 0.4rem !important;
+  }
+
+  #topNavbar .topnav-lang-text {
+    display: none;
+  }
+
+  #topNavbar .topnav-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    margin-right: 0.4rem !important;
+  }
 }
 
 .navbar-custom .navbar-nav {
@@ -95,8 +167,8 @@ footer .col-md-3 a:hover {
 
 .navbar-custom .nav-link {
   font-weight: bold;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  font-size: 18px;
+  padding: 0.5rem 16px;
   color: #fff !important;
 }
 
@@ -105,42 +177,96 @@ footer .col-md-3 a:hover {
   opacity: 0.85;
 }
 
+/* NAVBAR STICKY (BARRA PEGAYOSA AL HACER SCROLL) */
 .navbar-sticky {
-  display: none; /* jQuery la muestra/oculta con .css('display', ...) al hacer scroll */
+  display: none; /* jQuery controla fadeIn/fadeOut con esta propiedad */
+  position: fixed !important;
   top: 0;
-  z-index: 1030; /* por encima del contenido, mismo nivel que fixed-top de Bootstrap */
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1050;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-  opacity: 0;
-  animation: stickyFadeIn 0.2s ease-in forwards;
-}
-
-@keyframes stickyFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }
 
 .navbar-sticky .btn-link {
   text-decoration: none;
 }
 
-/* La barra sticky solo tiene sentido en desktop: en mobile ya existe el logo
-   M chico + el navbar colapsable, así que forzamos su ocultamiento aquí para
-   que nunca choque con el toggler de hamburguesa.
-   IMPORTANTE: este valor debe coincidir con el breakpoint que uses en
-   navbar-expand-* (md = 767.98px, lg = 991.98px). Si cambiás uno, cambiá el otro. */
+/* Ajuste para mantener los elementos clonados horizontales */
+#stickyNavContent .navbar-nav {
+  flex-direction: row !important;
+}
+
+#stickyNavContent .nav-link {
+  padding-left: 0.75rem !important;
+  padding-right: 0.75rem !important;
+  font-size: 0.95rem;
+}
+
+/* Desactivar en pantallas pequeñas para evitar colisión con el menú hamburguesa */
 @media (max-width: 767.98px) {
   .navbar-sticky {
     display: none !important;
   }
 }
 
+/* TIRA DE EQUIPOS */
 .teams-strip > a {
   margin: 0 0.5rem;
   flex-shrink: 0;
 }
+
 .teams-strip {
   scrollbar-width: none;
 }
+
 .teams-strip::-webkit-scrollbar {
   display: none;
+}
+
+
+/* Desinclinamos la imagen interna para que la letra 'M' no se deforme */
+.sticky-logo-badge img {
+  height: 28px;
+  width: auto;
+  transform: skewX(12deg);
+}
+
+/* --- AJUSTE DE ESPACIADO DE NAVEGACIÓN --- */
+/* Cierra la distancia entre cada ítem del menú en la barra pegajosa */
+#stickyNavContent .nav-link {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  font-size: 15px !important;
+  white-space: nowrap;
+}
+
+#stickyNavContent .navbar-nav {
+  margin-right: auto !important; /* Mantiene el menú pegado a la izquierda */
+  margin-left: 0 !important;
+}
+
+/* Corrección para que la M no ocupe toda la pantalla */
+.sticky-logo-badge {
+  background-color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px; /* Alto fijo de la cajita blanca */
+  width: 50px;  /* Ancho fijo de la cajita blanca */
+  padding: 4px;
+  margin-right: 15px;
+  transform: skewX(-12deg);
+  transform-origin: top left;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0; /* Evita que Bootstrap lo aplaste o estire */
+}
+
+/* Control estricto de la imagen interna */
+.sticky-logo-badge img {
+  max-height: 28px !important; /* Limita la altura de la 'M' */
+  width: auto !important;       /* Mantiene la proporción */
+  transform: skewX(12deg);
+  display: block;
 }
