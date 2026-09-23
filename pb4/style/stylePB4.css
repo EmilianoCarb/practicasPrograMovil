@@ -439,3 +439,44 @@ footer .col-md-3 a:hover {
   color: #bf1402;
   text-decoration: underline;
 }   
+
+/* ==========================================================================
+   6. BARRA "AGENDA"
+   ========================================================================== */
+.agenda-group {
+  display: flex;
+  align-items: center;
+  background-color: #e0e0e0;
+  border-radius: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.agenda-pill {
+  background-color: #c00000;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.72rem;
+  padding: 8px 12px;
+  border-radius: 0;
+  white-space: nowrap;
+  line-height: 1.1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch; /* Ocupa todo el alto disponible */
+}
+
+.agenda-text {
+  font-size: 0.72rem;
+  color: #333333;
+  line-height: 1.2;
+  white-space: nowrap;
+  padding: 6px 12px;
+}
+
+.agenda-text strong {
+  font-weight: 700;
+  color: #000000;
+}
