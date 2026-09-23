@@ -177,7 +177,7 @@ footer + div {
 /* Móvil / Menú Hamburguesa (< 768px) */
 @media (max-width: 767.98px) {
   .navbar-custom .navbar-collapse {
-    background-color: #bf1402;
+    background-color: rgba(164, 25, 9, 0.92);
     position: relative;
     z-index: 1045;
     width: 100%;
@@ -317,6 +317,13 @@ footer + div {
     position: static !important; 
   }
 
+  /* Nuevo: convierte el .container del nav en el punto de referencia
+     para el mega-menú, así left/right/width:100% se ajustan a su
+     ancho (centrado) en vez de al ancho completo de la pantalla */
+  .navbar-custom .container {
+    position: relative;
+  }
+
   .mega-menu {
     background: rgba(18, 24, 33, 0.95);
     backdrop-filter: blur(6px);
@@ -365,7 +372,6 @@ footer + div {
     margin-bottom: 0;
   }
 }
-
 
 /* ==========================================================================
    4. COMPONENTES SECUNDARIOS (TIRA DE EQUIPOS Y FOOTER)
