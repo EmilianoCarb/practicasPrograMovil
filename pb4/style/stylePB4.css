@@ -391,10 +391,23 @@ footer + div {
 /* --- Tira de Equipos --- */
 .teams-strip {
   scrollbar-width: none;
+  /* IMPORTANTE: no usar justify-content:center aquí. Con flex-nowrap +
+     overflow-auto, "center" hace que el scroll no pueda alcanzar el
+     contenido que desborda hacia la izquierda (queda en coordenadas
+     negativas, inalcanzables). Usamos flex-start + pseudo-elementos
+     con margin:auto para lograr el mismo efecto visual sin ese bug. */
+  justify-content: flex-start;
 }
 
 .teams-strip::-webkit-scrollbar {
   display: none;
+}
+
+.teams-strip::before,
+.teams-strip::after {
+  content: "";
+  margin: auto;
+  flex-shrink: 0;
 }
 
 .teams-strip > a {
