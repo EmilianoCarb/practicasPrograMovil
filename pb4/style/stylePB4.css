@@ -221,17 +221,26 @@ footer + div {
   text-decoration: none;
 }
 
-#stickyNavContent .navbar-nav {
-  flex-direction: row !important;
-  margin-right: auto !important;
-  margin-left: 0 !important;
+#stickyNavContent {
+  flex-grow: 0 !important;
+  margin: 0 auto !important;
+  justify-content: center;
 }
 
-#stickyNavContent .nav-link {
+#stickyNavContent a {
+  font-family: Roboto, Arial, Helvetica, sans-serif !important;
+  font-weight: bold !important;
+  color: #fff !important;
+  font-size: 18px !important;
+  white-space: nowrap;
   padding-left: 10px !important;
   padding-right: 10px !important;
-  font-size: 15px !important;
-  white-space: nowrap;
+  text-decoration: none;
+}
+
+#stickyNavContent a:hover {
+  color: #fff !important;
+  opacity: 0.85;
 }
 
 .sticky-logo-badge {
@@ -317,7 +326,7 @@ footer + div {
     position: static !important; 
   }
 
-  /* Nuevo: convierte el .container del nav en el punto de referencia
+  /* Convierte el .container del nav en el punto de referencia
      para el mega-menú, así left/right/width:100% se ajustan a su
      ancho (centrado) en vez de al ancho completo de la pantalla */
   .navbar-custom .container {
